@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { View, Button, Text, Dimensions, FlatList, TextInput, Animated, Pressable } from 'react-native';
 import Constants from 'expo-constants';
 import { FontAwesome } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
 import defaultStyles from '../../global/styles/styles'
 
@@ -23,16 +24,17 @@ const styles = {
     },
     imageWrapper: {
         width: '100%',
-        height: 300,
+        height: 350,
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center',
-        borderBottomWidth:1,
-        borderLeftWidth:1,
-        borderRightWidth:1,
-        borderColor:'#aaaaaa'
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding:20,
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderColor: '#aaaaaa'
     },
     formContainer: {
         width: '100%',
@@ -50,18 +52,49 @@ export default function Screen() {
     const [phone, setPhone] = useState('');
     const [selectedLanguage, setSelectedLanguage] = useState();
 
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            quality: 1,
+            allowsMultipleSelection: true,
+            base64: false,
+        });
+
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
+
+
     return (
         <>
             <StatusBar style="dark" />
             <View style={{ height: Constants.statusBarHeight, width: '100%' }}></View>
             <View style={styles.container}>
                 <View style={styles.imageWrapper}>
-                    <View style={{width:120, height:100, alignItems:'center', justifyContent:'center', display:'flex'}}>
-                        <FontAwesome name="camera" size={100} color="#aaaaaa" />
+
+                    <Pressable style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+                        <FontAwesome name="photo" size={100} color="#aaaaaa" />
+                        <Text style={{ padding: 10, fontSize: 14 }}>Toque na camera abaixo, precisamos de pelo menos 3 fotos do seu veiculo</Text>
+                    </Pressable>
+                    <View style={{ width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'center', display: 'flex', flexDirection:'row'}}>
+                        <Pressable style={{width:'33.3%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                            <FontAwesome name="camera" size={50} color="#aaaaaa"/>
+                            <FontAwesome name="plus" size={35} color="blue" style={{ position: 'absolute', top:19, right:15 }} />
+                        </Pressable>
+                        <Pressable style={{width:'33.3%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                            <FontAwesome name="camera" size={50} color="#aaaaaa"/>
+                            <FontAwesome name="plus" size={35} color="blue" style={{ position: 'absolute', top:19, right:15 }} />
+                        </Pressable>
+                        <Pressable style={{width:'33.3%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                            <FontAwesome name="camera" size={50} color="#aaaaaa"/>
+                            <FontAwesome name="plus" size={35} color="blue" style={{ position: 'absolute', top:19, right:15 }} />
+                        </Pressable>
                     </View>
-                    <Text style={{ padding: 10, fontSize: 14 }}>Precisamos de pelo menos 3 fotos do seu veiculo</Text>
                 </View>
-                <Text style={{ padding: 10, fontSize: 14 }}>*Vamos comparar as informações com a foto do seu CRLV</Text>
                 <View style={styles.formContainer}>
                     <TextInput
                         style={[defaultStyles.inputText, { fontSize: 20, padding: 10, borderColor: '#aaaaaa', borderWidth: 1 }]}
