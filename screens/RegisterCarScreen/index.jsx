@@ -54,6 +54,8 @@ export default function Screen() {
     const [selectedLanguage, setSelectedLanguage] = useState();
     const [images, setImages] = useState([]);
     const [updateImage, setupdateImage] = useState("");
+    const [currentImage, setCurrentImage] = useState("");
+
 
     useEffect(() => {
         var array = images;
@@ -63,7 +65,7 @@ export default function Screen() {
         }
         setupdateImage("")
     }, [updateImage])
-    
+
 
     const pickImage = async () => {
 
@@ -72,6 +74,7 @@ export default function Screen() {
 
             if (!result.cancelled) {
                 setupdateImage(result.uri);
+                setCurrentImage(result.uri);
             }
         }
     };
@@ -82,20 +85,30 @@ export default function Screen() {
             <View style={{ height: Constants.statusBarHeight, width: '100%' }}></View>
             <View style={styles.container}>
                 <View style={styles.imageWrapper}>
-                    {
+                    {currentImage == "" ?
+
                         <View style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
                             <FontAwesome name="photo" size={100} color="#aaaaaa" />
                             <Text style={{ padding: 10, fontSize: 14 }}>Toque na camera abaixo, precisamos de pelo menos 3 fotos do seu veiculo</Text>
                         </View>
+                        :
+                        <Image
+                            style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex', borderWidth: 4, borderColor: '#6288EB' }}
+                            source={{ uri: currentImage }}
+                        />
                     }
                     <View style={{ width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'flex-start', display: 'flex', flexDirection: 'row' }}>
 
                         {images.map((e, i) => {
-
+                            var style = { width: '95%', height: '95%' }
+                            if (currentImage == e) {
+                                style = { ...style, borderWidth: 2, borderColor: '#6288EB' }
+                            }
                             return (
-                                <Pressable key={i} style={styles.photoPressable} onPress={pickImage}>
+
+                                <Pressable key={i} style={styles.photoPressable} onPress={() => setCurrentImage(e)} >
                                     <Image
-                                        style={{ width: '95%', height: '95%' }}
+                                        style={style}
                                         source={{ uri: e }}
                                     />
                                 </Pressable>
