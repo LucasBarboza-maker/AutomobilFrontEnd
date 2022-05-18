@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Button, Text, Dimensions, FlatList, TextInput, Animated, Pressable } from 'react-native';
+import { View, Button, Text, Dimensions, FlatList, TextInput, Animated, Pressable, Image } from 'react-native';
 import Constants from 'expo-constants';
 import { FontAwesome } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
@@ -29,7 +29,7 @@ const styles = {
         borderBottomRightRadius: 30,
         display: 'flex',
         justifyContent: 'space-between',
-        padding:20,
+        padding: 20,
         alignItems: 'center',
         borderBottomWidth: 1,
         borderLeftWidth: 1,
@@ -44,30 +44,37 @@ const styles = {
     },
     inputStyle: {
         fontSize: 30
-    }
+    },
+    photoPressable: { width: '33.3%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', elevation: 1 }
 }
 
 export default function Screen() {
 
     const [phone, setPhone] = useState('');
     const [selectedLanguage, setSelectedLanguage] = useState();
+    const [images, setImages] = useState([]);
+    const [updateImage, setupdateImage] = useState("");
+
+    useEffect(() => {
+        var array = images;
+        if (updateImage != "") {
+            array.push(updateImage);
+            setImages(array)
+        }
+        setupdateImage("")
+    }, [updateImage])
+    
 
     const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            quality: 1,
-            allowsMultipleSelection: true,
-            base64: false,
-        });
 
+        if (images.length < 3) {
+            let result = await ImagePicker.launchCameraAsync();
 
-        console.log(result);
-
-        if (!result.cancelled) {
-            setImage(result.uri);
+            if (!result.cancelled) {
+                setupdateImage(result.uri);
+            }
         }
     };
-
 
     return (
         <>
@@ -75,24 +82,42 @@ export default function Screen() {
             <View style={{ height: Constants.statusBarHeight, width: '100%' }}></View>
             <View style={styles.container}>
                 <View style={styles.imageWrapper}>
+                    {
+                        <View style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
+                            <FontAwesome name="photo" size={100} color="#aaaaaa" />
+                            <Text style={{ padding: 10, fontSize: 14 }}>Toque na camera abaixo, precisamos de pelo menos 3 fotos do seu veiculo</Text>
+                        </View>
+                    }
+                    <View style={{ width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'flex-start', display: 'flex', flexDirection: 'row' }}>
 
-                    <Pressable style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
-                        <FontAwesome name="photo" size={100} color="#aaaaaa" />
-                        <Text style={{ padding: 10, fontSize: 14 }}>Toque na camera abaixo, precisamos de pelo menos 3 fotos do seu veiculo</Text>
-                    </Pressable>
-                    <View style={{ width: '100%', height: 100, alignItems: 'flex-start', justifyContent: 'center', display: 'flex', flexDirection:'row'}}>
-                        <Pressable style={{width:'33.3%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                            <FontAwesome name="camera" size={50} color="#aaaaaa"/>
-                            <FontAwesome name="plus" size={35} color="blue" style={{ position: 'absolute', top:19, right:15 }} />
-                        </Pressable>
-                        <Pressable style={{width:'33.3%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                            <FontAwesome name="camera" size={50} color="#aaaaaa"/>
-                            <FontAwesome name="plus" size={35} color="blue" style={{ position: 'absolute', top:19, right:15 }} />
-                        </Pressable>
-                        <Pressable style={{width:'33.3%', height:'100%', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                            <FontAwesome name="camera" size={50} color="#aaaaaa"/>
-                            <FontAwesome name="plus" size={35} color="blue" style={{ position: 'absolute', top:19, right:15 }} />
-                        </Pressable>
+                        {images.map((e, i) => {
+
+                            return (
+                                <Pressable key={i} style={styles.photoPressable} onPress={pickImage}>
+                                    <Image
+                                        style={{ width: '95%', height: '95%' }}
+                                        source={{ uri: e }}
+                                    />
+                                </Pressable>
+
+                            )
+
+
+                            // 
+
+                        })}
+
+                        {
+                            images.length < 3 ?
+                                <Pressable style={styles.photoPressable} onPress={pickImage}>
+                                    <FontAwesome name="camera" size={50} color="#C4C4C4" />
+                                    <FontAwesome name="plus" size={35} color="#6288EB" style={{ position: 'absolute', top: 19, right: 15 }} />
+                                </Pressable>
+                                :
+                                <></>
+                        }
+
+
                     </View>
                 </View>
                 <View style={styles.formContainer}>
