@@ -13,6 +13,8 @@ import CarCard from '../../components/cards/searchCarCard.jsx';
 
 import { Picker } from '@react-native-picker/picker';
 
+const borderColor = "#6288EB"
+
 const styles = {
     container: {
         flex: 1,
@@ -90,7 +92,7 @@ export default function Screen() {
         <>
             <StatusBar style="dark" />
             <View style={{ height: Constants.statusBarHeight, width: '100%' }}></View>
-            <View style={styles.imageWrapper}>
+            <View style={[styles.imageWrapper,{ borderColor:borderColor}]}>
                 {currentImage == "" ?
 
                     <View style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
@@ -99,7 +101,7 @@ export default function Screen() {
                     </View>
                     :
                     <Image
-                        style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex', borderWidth: 4, borderColor: '#6288EB' }}
+                        style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex', borderWidth: 4, borderColor:borderColor }}
                         source={{ uri: currentImage }}
                     />
                 }
@@ -145,11 +147,11 @@ export default function Screen() {
                     <View style={styles.formContainer}>
                         <Text style={{ fontSize: 20, marginBottom: 10 }}>Register car form:</Text>
                         <TextInput
-                            style={[defaultStyles.inputText, { fontSize: 15, padding: 10, borderColor: '#aaaaaa', borderWidth: 1 }]}
+                            style={[defaultStyles.inputText, { fontSize: 15, padding: 10, borderColor: borderColor, borderWidth: 1 }]}
                             placeholder='Modelo do Carro'
                         />
                         <TextInput
-                            style={[defaultStyles.inputText, { fontSize: 15, marginTop: 10, padding: 10, borderColor: '#aaaaaa', borderWidth: 1 }]}
+                            style={[defaultStyles.inputText, { fontSize: 15, marginTop: 10, padding: 10, borderColor: borderColor, borderWidth: 1 }]}
                             placeholder='Cor Predominante'
                         />
                         {/* <MaskInput
@@ -161,7 +163,7 @@ export default function Screen() {
                         mask={['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                     /> */}
                         <View
-                            style={[defaultStyles.inputText, { borderColor: '#aaaaaa', borderWidth: 1, fontSize: 20, marginTop: 10, justifyContent: 'center' }]}
+                            style={[defaultStyles.inputText, { borderColor: borderColor, borderWidth: 1, fontSize: 20, marginTop: 10, justifyContent: 'center' }]}
                         >
                             <Picker
 
@@ -178,7 +180,7 @@ export default function Screen() {
                         </View>
 
                         <View
-                            style={[defaultStyles.inputText, { borderColor: '#aaaaaa', borderWidth: 1, fontSize: 20, marginTop: 10, justifyContent: 'center' }]}
+                            style={[defaultStyles.inputText, { borderColor: borderColor, borderWidth: 1, fontSize: 20, marginTop: 10, justifyContent: 'center' }]}
                         >
                             <Picker
                                 selectedValue={selectedLanguage}
@@ -196,7 +198,7 @@ export default function Screen() {
                                 Uso para trabalho ou passeio?
                             </Text>
                             <View
-                                style={{ width: '35%', justifyContent: 'center' }}
+                                style={{ width: '35%', justifyContent: 'center'}}
                             >
                                 <Picker
                                     selectedValue={selectedLanguage}
@@ -249,7 +251,7 @@ export default function Screen() {
                             </>
                         }
                         <TextInput
-                            style={[defaultStyles.inputText, { fontSize: 15, marginTop: 10, padding: 10, borderColor: '#aaaaaa', borderWidth: 1 }]}
+                            style={[defaultStyles.inputText, { fontSize: 15, marginTop: 10, padding: 10, borderColor: borderColor, borderWidth: 1 }]}
                             placeholder={`Valor do aluguel`}
                         />
                     </View>

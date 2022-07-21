@@ -46,10 +46,10 @@ export default function Login({navigation}) {
                 </Pressable>
                 <Text style={styles.link}>Esqueceu a senha?</Text>
             </View>
-            <View style={styles.footerWrapper}>
+            <Pressable onPress={() => navigation.navigate('SignUp')} style={styles.footerWrapper}>
                 <Text style={styles.footerText}>Não tem uma conta?</Text>
                 <Text style={[styles.link, {marginLeft:3}]}>Registre-se agora</Text>
-            </View>
+            </Pressable>
         </View>
     );
 }

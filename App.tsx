@@ -8,6 +8,7 @@ import { RootStackParamList } from './screens/RootStackParamList';
 
 import Home from './screens/HomeScreen';
 import Login from './screens/LoginScreen';
+import SignUp from './screens/SignUpScreen';
 import Main from './config/tab'
 import SearchListScreen from './screens/SearchListScreen'
 import RegisterCarScreen from './screens/RegisterCarScreen'
@@ -21,6 +22,7 @@ function App() {
           headerShown: false
         }}>
         <Screen name="Login" component={Login}/>
+        <Screen name="SignUp" component={SignUp}/>
         <Screen name="Main" component={Main} />
         <Screen name="Home" component={Home} />
         <Screen name="SearchList" component={SearchListScreen}/>
