@@ -4,6 +4,7 @@ import { View, Button, Text, TextInput, Animated, Pressable, Image, ScrollView }
 import Constants from 'expo-constants';
 import { FontAwesome } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import BackButton from '../../components/buttons/BackButton';
 
 import defaultStyles from '../../global/styles/styles'
 
@@ -49,7 +50,7 @@ const styles = {
     photoPressable: { width: '33.3%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', elevation: 1 }
 }
 
-export default function Screen() {
+export default function Screen({navigation}) {
 
     const [phone, setPhone] = useState('');
     const [selectedLanguage, setSelectedLanguage] = useState();
@@ -93,6 +94,8 @@ export default function Screen() {
             <StatusBar style="dark" />
             <View style={{ height: Constants.statusBarHeight, width: '100%' }}></View>
             <View style={[styles.imageWrapper,{ borderColor:borderColor}]}>
+            <BackButton navigator={navigation} color={'black'} topPosition={10}/>
+
                 {currentImage == "" ?
 
                     <View style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
@@ -229,31 +232,6 @@ export default function Screen() {
                                 </Picker>
                             </View>
                         </View>
-                        {carObj.disponibility != "undetermined" ?
-                            <View style={{ width: '100%', justifyContent: 'space-between', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                <Text>
-                                    Quantos {formatDisponibility(carObj.disponibility)}?
-                                </Text>
-                                <View
-                                    style={{ width: '35%', justifyContent: 'center', marginTop: 10, backgroundColor:'white',  }}
-                                >
-                                    <TextInput
-                                        style={{ textAlign: 'center' }}
-                                        keyboardType='numeric'
-                                        placeholder='0'
-                                    >
-
-                                    </TextInput>
-                                </View>
-                            </View>
-                            :
-                            <>
-                            </>
-                        }
-                        <TextInput
-                            style={[defaultStyles.inputText, { fontSize: 15, marginTop: 10, padding: 10, borderColor: borderColor, borderWidth: 1 }]}
-                            placeholder={`Valor do aluguel`}
-                        />
                     </View>
 
                 </View>
