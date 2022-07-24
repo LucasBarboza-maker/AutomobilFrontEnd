@@ -50,7 +50,7 @@ const styles = {
     photoPressable: { width: '33.3%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', elevation: 1 }
 }
 
-export default function Screen({navigation}) {
+export default function Screen({ navigation }) {
 
     const [phone, setPhone] = useState('');
     const [selectedLanguage, setSelectedLanguage] = useState();
@@ -93,8 +93,8 @@ export default function Screen({navigation}) {
         <>
             <StatusBar style="dark" />
             <View style={{ height: Constants.statusBarHeight, width: '100%' }}></View>
-            <View style={[styles.imageWrapper,{ borderColor:borderColor}]}>
-            <BackButton navigator={navigation} color={'black'} topPosition={10}/>
+            <View style={[styles.imageWrapper, { borderColor: borderColor }]}>
+                <BackButton navigator={navigation} color={'black'} topPosition={10} />
 
                 {currentImage == "" ?
 
@@ -104,7 +104,7 @@ export default function Screen({navigation}) {
                     </View>
                     :
                     <Image
-                        style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex', borderWidth: 4, borderColor:borderColor }}
+                        style={{ width: '100%', height: 200, alignItems: 'center', justifyContent: 'center', display: 'flex', borderWidth: 4, borderColor: borderColor }}
                         source={{ uri: currentImage }}
                     />
                 }
@@ -201,7 +201,7 @@ export default function Screen({navigation}) {
                                 Uso para trabalho ou passeio?
                             </Text>
                             <View
-                                style={{ width: '35%', justifyContent: 'center'}}
+                                style={{ width: '35%', justifyContent: 'center' }}
                             >
                                 <Picker
                                     selectedValue={selectedLanguage}
@@ -216,7 +216,7 @@ export default function Screen({navigation}) {
                         </View>
                         <View style={{ width: '100%', justifyContent: 'space-between', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Text>
-                                Qual é a disponibilidade do aluguel?
+                                Quanto tempo pode ser alugado?
                             </Text>
                             <View
                                 style={{ width: '35%', justifyContent: 'center' }}
@@ -226,18 +226,70 @@ export default function Screen({navigation}) {
                                     onValueChange={(itemValue, itemIndex) =>
                                         setCarObj({ ...carObj, disponibility: itemValue })
                                     }>
-                                    <Picker.Item style={{ fontSize: 15 }} label="Meses" value="month" />
-                                    <Picker.Item style={{ fontSize: 15 }} label="Dias" value="Day" />
+                                    <Picker.Item style={{ fontSize: 15 }} label="Dias" value="daily" />
+                                    <Picker.Item style={{ fontSize: 15 }} label="Meses" value="monthly" />
                                     <Picker.Item style={{ fontSize: 15 }} label="Inderteminado" value="undetermined" />
                                 </Picker>
                             </View>
                         </View>
+                        <View style={{ width: '100%', justifyContent: 'space-between', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <Text>
+                                Valor do aluguel diário*
+                            </Text>
+                            <View
+                                style={{ overflow: 'hidden', width: '35%', justifyContent: 'center', marginTop: 10, backgroundColor: 'white', borderRadius: 7, borderWidth: 1, borderColor: borderColor, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft:10, paddingRight:10 }}
+                            >
+                                {
+                                    carObj.dailyRentValue != undefined && carObj.dailyRentValue != "" ?
+                                        <Text>R$</Text>
+                                        :
+                                        <></>
+                                }
+                                <TextInput
+                                    style={{ textAlign: 'center' }}
+                                    keyboardType='numeric'
+                                    placeholder='R$ 0'
+                                    value={carObj.dailyRentValue}
+                                    onChangeText={(e) => { setCarObj({ ...carObj, dailyRentValue: e }) }}
+                                >
+
+                                </TextInput>
+                            </View>
+                        </View>
+                        {carObj.disponibility != undefined && carObj.disponibility == "monthly" || carObj.disponibility == "undetermined"?
+                            <View style={{ width: '100%', justifyContent: 'space-between', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                <Text>
+                                    Valor do aluguel Mensal*
+                                </Text>
+                                <View
+                                    style={{ width: '35%', justifyContent: 'center', marginTop: 10, backgroundColor: 'white', borderRadius: 7, borderWidth: 1, borderColor: borderColor, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft:10, paddingRight:10 }}
+                                >
+                                    {
+                                        carObj.monthlyRentValue != undefined && carObj.monthlyRentValue != "" ?
+                                            <Text>R$</Text>
+                                            :
+                                            <></>
+                                    }
+                                    <TextInput
+                                        style={{ textAlign: 'center' }}
+                                        keyboardType='numeric'
+                                        placeholder='R$ 0'
+                                        value={carObj.monthlyRentValue}
+                                        onChangeText={(e) => { setCarObj({ ...carObj, monthlyRentValue: e }) }}
+                                    >
+
+                                    </TextInput>
+                                </View>
+                            </View>
+                            :
+                            <></>
+                        }
                     </View>
 
                 </View>
             </ScrollView>
-            <Pressable onPress={() => { console.log("Avançar") }} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', alignSelf: 'flex-end' }}>
-                <View style={{}}>
+            <Pressable onPress={() => { navigation.navigate("CarRegistration") }} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', alignSelf: 'flex-end' }}>
+                <View>
                     <Text style={{ fontSize: 18, marginRight: 10 }}>Avançar</Text>
                 </View>
                 <FontAwesome name="chevron-right" size={30} color="#6288EB" />

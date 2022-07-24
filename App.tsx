@@ -10,8 +10,10 @@ import Home from './screens/HomeScreen';
 import Login from './screens/LoginScreen';
 import SignUp from './screens/SignUpScreen';
 import Main from './config/tab'
-import SearchListScreen from './screens/SearchListScreen'
-import RegisterCarScreen from './screens/RegisterCarScreen'
+import SearchList from './screens/SearchListScreen'
+import RegisterCar from './screens/RegisterCarScreen'
+import CarDetails from './screens/CarDetailsScreen'
+import MyCarDetails from './screens/MyCarDetailsScreen'
 
 const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 
@@ -25,8 +27,10 @@ function App() {
         <Screen name="SignUp" component={SignUp}/>
         <Screen name="Main" component={Main} />
         <Screen name="Home" component={Home} />
-        <Screen name="SearchList" component={SearchListScreen}/>
-        <Screen name="RegisterCar" component={RegisterCarScreen}/>
+        <Screen name="SearchList" component={SearchList}/>
+        <Screen name="RegisterCar" component={RegisterCar}/>
+        <Screen name="CarDetails" component={CarDetails}/>
+        <Screen name="MyCarDetails" component={MyCarDetails}/>
       </Navigator>
     </NavigationContainer>
 
