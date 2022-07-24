@@ -2,9 +2,9 @@ import { StyleSheet, Text, View, ScrollView, Image, TextInput, FlatList, Pressab
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-export default function Card({ rented }) {
+export default function Card({ rented, screen, navigator }) {
     return (
-        <Pressable onPress={() => { console.log(rented) }} style={styles.cardBody}>
+        <Pressable onPress={() => { navigator.navigate(screen) }} style={styles.cardBody}>
             <View style={styles.topCard}>
 
 

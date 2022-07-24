@@ -56,7 +56,7 @@ export default function Cars({navigation}) {
                     data={[{ id: 1, nome: "Peugeot", rented: false }, { id: 2, nome: "Ford", rented: true }, { id: 3, nome: "Ford", rented: true }]}
                     renderItem={(item) => {
                         return (
-                            <Card rented={item.item.rented}>
+                            <Card rented={item.item.rented} screen={"CarDetails"} navigator={navigation}>
                             </Card>)
                     }}
                     keyExtractor={(item) => item.id}
@@ -67,7 +67,7 @@ export default function Cars({navigation}) {
                     data={[{ id: 1, nome: "Peugeot", rented: false }]}
                     renderItem={(item) => {
                         return (
-                            <Card rented={item.item.rented}>
+                            <Card rented={item.item.rented} screen={"MyCarDetails"} navigator={navigation}>
                             </Card>)
                     }}
                     ListHeaderComponent={() => <>
