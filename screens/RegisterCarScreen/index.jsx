@@ -148,7 +148,7 @@ export default function Screen({ navigation }) {
                 <View style={styles.container}>
 
                     <View style={styles.formContainer}>
-                        <Text style={{ fontSize: 20, marginBottom: 10 }}>Register car form:</Text>
+                        <Text style={{ fontSize: 20, marginBottom: 10 }}>Formulário de Registro:</Text>
                         <TextInput
                             style={[defaultStyles.inputText, { fontSize: 15, padding: 10, borderColor: borderColor, borderWidth: 1 }]}
                             placeholder='Modelo do Carro'
@@ -237,7 +237,7 @@ export default function Screen({ navigation }) {
                                 Valor do aluguel diário*
                             </Text>
                             <View
-                                style={{ overflow: 'hidden', width: '35%', justifyContent: 'center', marginTop: 10, backgroundColor: 'white', borderRadius: 7, borderWidth: 1, borderColor: borderColor, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft:10, paddingRight:10 }}
+                                style={{ overflow: 'hidden', width: '35%', justifyContent: 'center', marginTop: 10, backgroundColor: 'white', borderRadius: 7, borderWidth: 1, borderColor: borderColor, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10 }}
                             >
                                 {
                                     carObj.dailyRentValue != undefined && carObj.dailyRentValue != "" ?
@@ -256,13 +256,13 @@ export default function Screen({ navigation }) {
                                 </TextInput>
                             </View>
                         </View>
-                        {carObj.disponibility != undefined && carObj.disponibility == "monthly" || carObj.disponibility == "undetermined"?
+                        {carObj.disponibility != undefined && carObj.disponibility == "monthly" || carObj.disponibility == "undetermined" ?
                             <View style={{ width: '100%', justifyContent: 'space-between', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                 <Text>
                                     Valor do aluguel Mensal*
                                 </Text>
                                 <View
-                                    style={{ width: '35%', justifyContent: 'center', marginTop: 10, backgroundColor: 'white', borderRadius: 7, borderWidth: 1, borderColor: borderColor, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft:10, paddingRight:10 }}
+                                    style={{ width: '35%', justifyContent: 'center', marginTop: 10, backgroundColor: 'white', borderRadius: 7, borderWidth: 1, borderColor: borderColor, display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10 }}
                                 >
                                     {
                                         carObj.monthlyRentValue != undefined && carObj.monthlyRentValue != "" ?
@@ -284,11 +284,13 @@ export default function Screen({ navigation }) {
                             :
                             <></>
                         }
+
                     </View>
 
                 </View>
+
             </ScrollView>
-            <Pressable onPress={() => { navigation.navigate("CarRegistration") }} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', alignSelf: 'flex-end' }}>
+            <Pressable onPress={() => { navigation.navigate("RegisterCarAddress") }} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', alignSelf: 'flex-end' }}>
                 <View>
                     <Text style={{ fontSize: 18, marginRight: 10 }}>Avançar</Text>
                 </View>

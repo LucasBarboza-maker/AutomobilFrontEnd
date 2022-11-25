@@ -48,6 +48,8 @@ export default function Screen() {
         }
     }, [_panel])
 
+    
+
     return (
         <View style={styles.container}>
             <View style={{ padding: 10, width: '100%' }}>

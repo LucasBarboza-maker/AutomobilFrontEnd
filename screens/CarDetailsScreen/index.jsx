@@ -77,7 +77,7 @@ export default function CarDetail({ navigation }) {
             </ScrollView>
             <View style={styles.rentButtonContainer}>
                 <Text style={{color:'white', fontSize:18}}>R$ 60 por dia ou 500 por mês</Text>
-                <Pressable style={{borderColor:'white', borderWidth:0.8, padding:10, borderRadius:10}}><Text style={{color:'white', fontWeight:'bold', fontSize:18}}>Reservar</Text></Pressable>
+                <Pressable onPress={() => navigation.navigate('ConfirmRent')} style={{borderColor:'white', borderWidth:0.8, padding:10, borderRadius:10}}><Text style={{color:'white', fontWeight:'bold', fontSize:18}}>Reservar</Text></Pressable>
             </View>
         </>
     );

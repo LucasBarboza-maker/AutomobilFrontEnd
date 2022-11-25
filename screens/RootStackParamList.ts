@@ -7,4 +7,6 @@ export type RootStackParamList = {
     SearchList: undefined,
     RegisterCar: undefined,
     CarDetails: undefined,
+    ConfirmRent: undefined,
+    RegisterCarAddress: undefined
 }

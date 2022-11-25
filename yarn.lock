@@ -1504,6 +1504,11 @@
   "resolved" "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   "version" "15.7.5"
 
+"@types/provinces@^1.11.4":
+  "integrity" "sha512-z3Hlmh8H6/f9uQbcYt7ex//uFlmgp1UhHsqt9aeMkw2RIOl1UaED1akDGH+Y+aBlX3dwAZCMxYtHCgWcr7kRvA=="
+  "resolved" "https://registry.npmjs.org/@types/provinces/-/provinces-1.11.4.tgz"
+  "version" "1.11.4"
+
 "@types/react-native@~0.64.12":
   "integrity" "sha512-qgqOJub7BYsAkcg3VSL3w63cgJdLoMmAX6TSTAPL53heCzUkIdtpWqjyNRH0n7jPjxPGG1Qmsv6GSUh7IfyqRg=="
   "resolved" "https://registry.npmjs.org/@types/react-native/-/react-native-0.64.24.tgz"
@@ -4636,6 +4641,11 @@
     "object-assign" "^4.1.1"
     "react-is" "^16.13.1"
 
+"provinces@^1.11.0":
+  "integrity" "sha512-5hoDYWtKr89stoSVajofU1rFGKzB2wpUqJJfnldokWfLUnLamQK9PnA8svh2j3XOYdb8BI2vbU4q3DtEcdNQ9w=="
+  "resolved" "https://registry.npmjs.org/provinces/-/provinces-1.11.0.tgz"
+  "version" "1.11.0"
+
 "pump@^3.0.0":
   "integrity" "sha512-LwZy+p3SFs1Pytd/jYct4wpv49HiYCqd9Rlc5ZVdk0V+8Yzv6jR5Blk3TRmPL1ft69TxP0IMZGJ+WPFU2BFhww=="
   "resolved" "https://registry.npmjs.org/pump/-/pump-3.0.0.tgz"
@@ -4677,7 +4687,7 @@
     "shell-quote" "^1.6.1"
     "ws" "^7"
 
-"react-dom@>=17.0.1", "react-dom@17.0.1":
+"react-dom@*", "react-dom@>=17.0.1", "react-dom@17.0.1":
   "integrity" "sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz"
   "version" "17.0.1"
@@ -4709,6 +4719,11 @@
     "flow-parser" "^0.121.0"
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
+
+"react-native-flags@^1.0.0":
+  "integrity" "sha512-Lx0/2Rv4oN5M3YmgGZPnxsTOEud6pMGX3HWrvw8Yftp9Bl+ORxdG8xjF2Gmm68iKP8T7NnQoJ8iMirjj5+qrgQ=="
+  "resolved" "https://registry.npmjs.org/react-native-flags/-/react-native-flags-1.0.0.tgz"
+  "version" "1.0.0"
 
 "react-native-gesture-handler@>= 1.0.0":
   "integrity" "sha512-K3oMiQV7NOVB5RvNlxkyJxU1Gn6m1cYu53MoFA542FVDSTR491d1eQkWDdqy4lW52rfF7IK7eE1LCi+kTJx7jw=="
@@ -4767,6 +4782,11 @@
   dependencies:
     "react-freeze" "^1.0.0"
     "warn-once" "^0.1.0"
+
+"react-native-select-dropdown@^2.0.4":
+  "integrity" "sha512-bv8iznvf04FThqCkkD4kxlbNjo2d69yLcEe3nUwalQ6ea2NXqUJRQ5uUr1SEDSCH8l6IQlmog8rkHthrLEzQ9A=="
+  "resolved" "https://registry.npmjs.org/react-native-select-dropdown/-/react-native-select-dropdown-2.0.4.tgz"
+  "version" "2.0.4"
 
 "react-native-svg@^12.3.0":
   "integrity" "sha512-ESG1g1j7/WLD7X3XRFTQHVv0r6DpbHNNcdusngAODIxG88wpTWUZkhcM3A2HJTb+BbXTFDamHv7FwtRKWQ/ALg=="
@@ -5026,6 +5046,11 @@
   "integrity" "sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI="
   "resolved" "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
   "version" "2.2.8"
+
+"rn-country-dropdown-picker@^2.1.8":
+  "integrity" "sha512-TMZSCDP/c+qjAiZbwb8acGMeux6llJ2jAHDNR2lxnhOPxr9JUzBpp1V29arbXBInd0nVVwgjVoXPKNUJ6pl69g=="
+  "resolved" "https://registry.npmjs.org/rn-country-dropdown-picker/-/rn-country-dropdown-picker-2.1.8.tgz"
+  "version" "2.1.8"
 
 "rn-sliding-up-panel@^2.4.5":
   "integrity" "sha512-Z8TEJE8KMjx0s9P4ikUDAlvyDgvF9n/6QR5GIUi8iWRKhiYJ4sddKjAIDYVI5yT1q+rJu+iAo7Z310H3yCb3sQ=="

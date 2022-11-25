@@ -14,6 +14,8 @@ import SearchList from './screens/SearchListScreen'
 import RegisterCar from './screens/RegisterCarScreen'
 import CarDetails from './screens/CarDetailsScreen'
 import MyCarDetails from './screens/MyCarDetailsScreen'
+import ConfirmRent from './screens/ConfirmRentScreen'
+import RegisterCarAddress from './screens/RegisterCarAddressScreen'
 
 const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 
@@ -30,7 +32,10 @@ function App() {
         <Screen name="SearchList" component={SearchList}/>
         <Screen name="RegisterCar" component={RegisterCar}/>
         <Screen name="CarDetails" component={CarDetails}/>
+        <Screen name="ConfirmRent" component={ConfirmRent}/>
         <Screen name="MyCarDetails" component={MyCarDetails}/>
+        <Screen name="RegisterCarAddress" component={RegisterCarAddress}/>
+
       </Navigator>
     </NavigationContainer>
 
